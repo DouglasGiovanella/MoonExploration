@@ -5,8 +5,8 @@ namespace MoonExploration
 {
 	class Program
 	{
-		public static int QntVertices;
-		public static string[,] Matrix;
+		public static int verticesQnt;
+		public static string[,] matrix;
 		private static List<(string source, string destionation)> tests;
 		private static Dictionary<string, int> nodesPositionRef;
 
@@ -16,21 +16,21 @@ namespace MoonExploration
 			{
 				var line = Console.In.ReadLine();
 				if (line == null || line == "" || line == " ")
-					break;
+					break; // Fim do arquivo, fim da execução :d
 
-				QntVertices = Convert.ToInt32(line);
-				Matrix = new string[QntVertices, QntVertices];
+				verticesQnt = Convert.ToInt32(line);
+				matrix = new string[verticesQnt, verticesQnt];
 				tests = new List<(string source, string destionation)>();
 				nodesPositionRef = new Dictionary<string, int>();
 
 				// ===================
 				// Popula a matriz
-				for (int i = 0; i < QntVertices; i++)
+				for (int i = 0; i < verticesQnt; i++)
 				{
 					var lineElemets = Console.In.ReadLine().Split(" ");
 					for (int j = 0; j < lineElemets.Length; j++)
 					{
-						Matrix[i, j] = lineElemets[j];
+						matrix[i, j] = lineElemets[j];
 					}
 				}
 				// ===================
@@ -51,20 +51,19 @@ namespace MoonExploration
 
 				// ===================
 				// Resultados
-				Graph graph = new Graph(QntVertices);
+				Graph graph = new Graph(verticesQnt);
 
-				// Faz a ligação dos nodes
-				for (int i = 0; i < QntVertices; i++)
+				for (int i = 0; i < verticesQnt; i++)
 				{
-					for (int j = 0; j < QntVertices; j++)
+					for (int j = 0; j < verticesQnt; j++)
 					{
-						if (Matrix[j, i] == ".")
+						if (matrix[j, i] == ".")
 						{
 							graph.AddEdge(j, i); // Cria a ligação entre os nodes
 
-							// Salva a referenecias string -> posicao
-							nodesPositionRef[Matrix[j, j]] = j;
-							nodesPositionRef[Matrix[i, i]] = i;
+							// Salva a referenecias string -> posicao (node)
+							nodesPositionRef[matrix[j, j]] = j;
+							nodesPositionRef[matrix[i, i]] = i;
 						}
 					}
 				}
