@@ -14,7 +14,11 @@ namespace MoonExploration
 		{
 			while (true)
 			{
-				QntVertices = Convert.ToInt32(Console.In.ReadLine());
+				var line = Console.In.ReadLine();
+				if (line == null || line == "" || line == " ")
+					break;
+
+				QntVertices = Convert.ToInt32(line);
 				Matrix = new string[QntVertices, QntVertices];
 				tests = new List<(string source, string destionation)>();
 				nodesPositionRef = new Dictionary<string, int>();
