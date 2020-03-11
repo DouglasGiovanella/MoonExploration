@@ -12,8 +12,6 @@ Equipe: Douglas do Amaral Giovanella, Fabiane Machado, Jeferson Machado e José 
 
 Na pasta builds contém o executável para a plataforma Windows 10 x64 (MoonExploration.exe) 
 
-(possui também para o MacOsX, mas como sou pobre e não tenho um mac, não sei se roda ç.ç) 
-
 Na pasta Windows10 x64 executar no prompt de comando: 
 
 > MoonExploration.exe < arquivo_de_entrada.txt > arquivo_de_saida.txt
